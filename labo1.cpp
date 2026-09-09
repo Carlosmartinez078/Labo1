@@ -4,7 +4,7 @@ void consultarsaldo(float saldoF);
 void deposito(float &saldo);
 void retiro(float *saldo);
 float saldo= 150.00;
-double main(){
+int main(){
     consultarsaldo(saldo);
     deposito(saldo);
     retiro(&saldo);
