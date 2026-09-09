@@ -1,5 +1,10 @@
 #include <iostream>
 
+void consultarsaldo(float saldoF);
+void deposito(float &saldo);
+void retiro(float *saldo);
+float saldo= 150.00;
+
 int main(){
     int opciones;
 
@@ -13,19 +18,19 @@ int main(){
 
     switch (opciones) {
     case 1:
-        std::cout << "hola mundo";
+    consultarsaldo(saldo);
         break;
     
     case 2:
-
+    deposito(saldo);
         break;
 
     case 3:
-        
+    retiro(&saldo);    
         break;
 
     case 4:
-
+    std::cout<<"saliendo del menu" << std::endl;
         break;
     
     case 5:
@@ -37,3 +42,32 @@ int main(){
 
     return 0;
 }
+
+    void consultarsaldo(float saldoF){
+    std::cout << "El saldo actual es: $" << saldoF << std::endl;
+    }
+
+    void deposito(float &saldo){
+    float monto=0;
+    std::cout << "Ingrese el monto a depositar: ";
+    std::cin >> monto;
+    if (monto > 0) {
+        saldo += monto;
+        std::cout << "Deposito exitoso. Nuevo saldo: $" << saldo << std::endl;
+    } else {
+        std::cout << "Monto invalido. No se realizo el deposito." << std::endl;
+    }
+     }
+ 
+ 
+    void retiro(float *saldo){
+    int monto=0;
+    std::cout << "Ingrese el monto a retirar: ";
+    std::cin >> monto;
+    if (monto > 0 && monto <= *saldo && (monto % 5 == 0)) {
+        *saldo -= monto;
+        std::cout << "Retiro exitoso. Nuevo saldo: $" << *saldo << std::endl;
+    } else {
+        std::cout << "Monto invalido o insuficiente. No se realizo el retiro." << std::endl;
+    }
+    }
